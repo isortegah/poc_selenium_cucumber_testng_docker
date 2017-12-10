@@ -26,16 +26,16 @@
               <artifactId>maven-surefire-plugin</artifactId>
               <version>2.20.1</version>
               <configuration>
-                <forkMode>none</forkMode>
+                <!-- <forkMode>none</forkMode> -->
                 <outputDirectory>${basedir}/target/surefire-reports</outputDirectory>
-                <useFile>false</useFile>
-               <!-- <suiteXmlFiles>
+                <!-- <useFile>false</useFile> -->
+                <suiteXmlFiles>
                   <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                 </suiteXmlFiles>
                 <systemPropertyVariables>
                     <propertyName>chrome</propertyName>
                 </systemPropertyVariables>
-                <parallel>methods</parallel>
+                <!-- <parallel>methods</parallel>
                 <threadCount>10</threadCount> -->
               </configuration>
             </plugin>
