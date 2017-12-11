@@ -3,22 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.isortegah.poc_setecudo;
 
-import com.isortegah.poc_setecudo.IntegerArithmetic;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 /**
  *
  * @author isortegah
  */
-public class FirstNGTest {
+public class SearchInGoogle {
     
-    public FirstNGTest() {
-        System.out.println("Instancia de la clase.");
+    public WebDriver driver;
+    
+    public SearchInGoogle() {
     }
 
     @BeforeClass
@@ -31,20 +38,22 @@ public class FirstNGTest {
 
     @BeforeMethod
     public void setUpMethod() throws Exception {
+        System.setProperty("webdriver.gecko.driver", "/usr/local/Cellar/geckodriver/0.19.1/bin/geckodriver");
+        driver = new FirefoxDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); 
+        driver.get("http://google.com");
     }
 
     @AfterMethod
-    public void tearDownMethod() throws Exception { 
+    public void tearDownMethod() throws Exception {
+        driver.quit();
     }
     
-   @Test
+    @Test
    public void testIntegerArithmeticMultiplyIntegers()
    {
-        final IntegerArithmetic instance = new IntegerArithmetic();
-        final int[] integers = {4, 5, 6};
-        final int expectedProduct = 4 * 5 * 6;
-        final int product = instance.multiplyIntegers(integers);
+        WebElement element = driver.findElement(By.name("q"));
+        element.sendKeys("Cheese!\n");
         //element.submit();
-        assertEquals(product, expectedProduct);
    }
 }
