@@ -137,4 +137,12 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     }
     
+    public void pause(Integer milliseconds){
+        try {
+            TimeUnit.MILLISECONDS.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
