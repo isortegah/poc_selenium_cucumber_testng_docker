@@ -54,6 +54,15 @@ public class SearchInGoogle {
    {
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("Cheese!\n");
+        pause(5000);
         //element.submit();
    }
+   
+   public void pause(Integer milliseconds){
+        try {
+            TimeUnit.MILLISECONDS.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -5,6 +5,7 @@
     <classes>
        <class name="FirstNGTest" />
        <class name="com.isortegah.poc_setecudo.SearchInGoogle" />
+       <class name="com.isortegah.poc_setecudo.TestRunner" />
     </classes>
   </test>
 </suite>
