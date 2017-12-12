@@ -11,8 +11,8 @@ import org.testng.Assert;
 public class SearchGooglePage extends TestRunner{
     @Given("^I am on google page$")
     public void googlePage() throws Throwable {
-/*
+        System.out.println("Desde el Given");
         String title = driver.getTitle();
-        Assert.assertEquals(title, "Google");*/
+        Assert.assertEquals(title, "Google");
     }
 }
