@@ -2,17 +2,23 @@ package com.isortegah.poc_setecudo;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import org.codehaus.plexus.util.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import static org.testng.Assert.*;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -100,14 +106,29 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         deleteAllCookies();
         setEnv();
     }
-
-    @AfterMethod
-    public void tearDownMethod() throws Exception {
-    }
     
     @AfterSuite(alwaysRun = true)
     public void tearDownSuite() throws Exception {
         closeBrowser();
+    }
+    
+    @AfterClass(alwaysRun = true)
+    public void takeScreenshot() throws IOException {
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "//screenshots/screenshot.png"));
+
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void tearDownr(ITestResult result) throws IOException {
+        if (result.isSuccess()) {
+            File imageFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            String failureImageFileName = result.getMethod().getMethodName()
+					+ new SimpleDateFormat("MM-dd-yyyy_HH-ss").format(new GregorianCalendar().getTime()) + ".png";
+            File failureImageFile = new File(System.getProperty("user.dir") + "//screenshots//" + failureImageFileName);
+            FileUtils.copyFile(imageFile, failureImageFile);
+        }
+
     }
     
 }
