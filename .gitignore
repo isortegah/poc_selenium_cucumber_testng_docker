@@ -1,2 +1,6 @@
 /poc_setecudo/target/
 .DS_Store
+poc_setecudo/.project
+.settings
+poc_setecudo/.classpath
+poc_setecudo/screenshots
