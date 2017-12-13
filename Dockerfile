@@ -17,14 +17,12 @@ ENV MAVEN_HOME /usr/lib/mvn
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $MAVEN_HOME/bin:$PATH
 
-RUN mvn --version
-RUN java -version
-
 RUN mkdir -p /home/seluser/testing
 ADD  poc_setecudo.tar.gz /home/seluser/testing
 WORKDIR /home/seluser/testing/poc_setecudo
 
 RUN mvn install -DskipTests=true
+
 #ADD entrypoint.sh /entrypoint.sh
 
 #RUN chmod +x /entrypoint.sh
