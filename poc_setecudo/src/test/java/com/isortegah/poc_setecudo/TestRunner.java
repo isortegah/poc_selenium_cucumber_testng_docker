@@ -1,10 +1,12 @@
 package com.isortegah.poc_setecudo;
 
+import com.sun.glass.ui.View;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,10 +15,14 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.codehaus.plexus.util.FileUtils;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import static org.testng.Assert.*;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -45,7 +51,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     
     public static Properties config = null;
     public static WebDriver driver = null;
-    
+    private String nodeUrl;
     
     public void LoadConfigProperty() throws IOException {
 		config = new Properties();
@@ -57,8 +63,15 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     public void openBrowser() throws Exception {
 		LoadConfigProperty();
 		if (config.getProperty("browserType").equals("Firefox")) {
-                        System.setProperty("webdriver.gecko.driver", "/usr/local/Cellar/geckodriver/0.19.1/bin/geckodriver");
-			driver = new FirefoxDriver();
+                        if(config.getProperty("webdriver").equals("local")){
+                            System.setProperty("webdriver.gecko.driver", "/usr/local/Cellar/geckodriver/0.19.1/bin/geckodriver");
+                            driver = new FirefoxDriver();
+                        }else{
+                            nodeUrl = "http://127.0.0.1:4444/wd/hub";  
+                            FirefoxOptions capability = new FirefoxOptions();
+                            capability.addPreference("browser.startup.page", 1);
+                            driver = new RemoteWebDriver( new URL(nodeUrl), capability);
+                        }
 		} else if (config.getProperty("browserType").equals("Chrome")) {
 			System.setProperty("webdriver.chrome.driver",
 					System.getProperty("user.dir") + "//src//test//resources//drivers/chromedriver");
@@ -106,7 +119,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     @BeforeMethod
     public void setUpMethod() throws Exception {
-         openBrowser();
+        openBrowser();
         maximizeWindow();
         implicitWait(30);
         deleteAllCookies();
