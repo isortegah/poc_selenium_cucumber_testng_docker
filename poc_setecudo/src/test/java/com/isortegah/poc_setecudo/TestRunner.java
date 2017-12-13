@@ -1,6 +1,6 @@
 package com.isortegah.poc_setecudo;
 
-import com.sun.glass.ui.View;
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import java.io.File;

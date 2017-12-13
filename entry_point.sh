@@ -40,4 +40,9 @@ fluxbox -display $DISPLAY &
 
 x11vnc -forever -usepw -shared -rfbport 5900 -display $DISPLAY &
 
+#export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+#cd /home/seluser/testing/poc_setecudo
+#mvn test
+
 wait $NODE_PID
+

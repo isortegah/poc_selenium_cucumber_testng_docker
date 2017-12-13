@@ -1,10 +1,10 @@
-FROM selenium/node-firefox-debug:3.5.3-astatine
-LABEL authors=ISORTEGAH
+FROM openjdk:alpine
 
-USER root
+MAINTAINER ISORTEGAH <isortegah@gmail.com>
 
-
-RUN apt-get install tar ca-certificates wget
+RUN apk add --no-cache --update curl nmap tar ca-certificates wget maven bash \                                                                                                                                                                                                      
+    &&   update-ca-certificates     \
+    && rm -rf /var/cache/apk/*
 
 ENV MAVEN_VERSION=3.5.2
 
@@ -14,16 +14,18 @@ RUN wget http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/ap
   mv apache-maven-$MAVEN_VERSION /usr/lib/mvn
 
 ENV MAVEN_HOME /usr/lib/mvn
-#ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $MAVEN_HOME/bin:$PATH
 
-#====================================
-# Scripts to run Selenium Standalone
-#====================================
-COPY entry_point.sh /opt/bin/entry_point.sh
-RUN chmod +x /opt/bin/entry_point.sh
+RUN mvn --version
+RUN java -version
 
-USER seluser
+RUN mkdir -p /home/seluser/testing
+ADD  poc_setecudo.tar.gz /home/seluser/testing
+WORKDIR /home/seluser/testing/poc_setecudo
 
-EXPOSE 4444
-EXPOSE 5900
+RUN mvn install -DskipTests=true
+#ADD entrypoint.sh /entrypoint.sh
+
+#RUN chmod +x /entrypoint.sh
+#ENTRYPOINT [ "./entrypoint.sh"]
