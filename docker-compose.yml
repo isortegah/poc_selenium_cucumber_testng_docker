@@ -1,5 +1,14 @@
-selenium:
-  image: isortegah/standalone-firefox-debug
-  ports:
-    - 4444:4444
-    - 5900:5900
+version: "3.2"
+services:
+  selenium:
+    image: isortegah/server_test
+    ports:
+      - 4444:4444
+      - 5900:5900
+    volumes:
+      - type: bind
+        source: /tmp/server_test/screenshots
+        target: /home/seluser/testing/poc_setecudo/screenshots
+      - type: bind
+        source: /tmp/server_test/reports
+        target: /home/seluser/testing/poc_setecudo/target/surefire-reports

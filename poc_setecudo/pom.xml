@@ -91,7 +91,7 @@
                   <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                 </suiteXmlFiles>
                 <systemPropertyVariables>
-                    <propertyName>chrome</propertyName>
+                    <propertyName>firefox</propertyName>
                 </systemPropertyVariables>
               </configuration>
             </plugin>
