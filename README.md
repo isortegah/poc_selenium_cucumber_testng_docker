@@ -12,3 +12,8 @@ http://maven.apache.org/surefire/maven-surefire-plugin/examples/testng.html)
 https://wunder.io/blog/creating-and-running-a-simple-selenium-webdriver-test/2011-09-15
 
 http://toolsqa.com/selenium-webdriver/testng-testcase/
+
+
+http://maven.apache.org/surefire/maven-surefire-plugin/examples/fork-options-and-parallel-execution.html
+
+http://maven.apache.org/surefire/maven-surefire-plugin/examples/shutdown.html
