@@ -1,4 +1,4 @@
-FROM isortegah/node_base
+FROM isortegah/node-base:v1
 
 USER root
 

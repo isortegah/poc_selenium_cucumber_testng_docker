@@ -1,8 +1,7 @@
 version: "3.2"
 services:
   selenium:
-    image: isortegah/server-test:v1
+    image: isortegah/node-firefox:v1
     ports:
       - 4444:4444
       - 5900:5900
-    

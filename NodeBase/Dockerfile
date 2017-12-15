@@ -1,4 +1,4 @@
-FROM isortegah/base
+FROM isortegah/base:v1
 
 USER root
 
@@ -27,8 +27,8 @@ COPY entry_point.sh \
 #============================
 # Some configuration options
 #============================
-ENV SCREEN_WIDTH 1360
-ENV SCREEN_HEIGHT 1020
+ENV SCREEN_WIDTH 1024
+ENV SCREEN_HEIGHT 768
 ENV SCREEN_DEPTH 24
 ENV DISPLAY :99.0
 

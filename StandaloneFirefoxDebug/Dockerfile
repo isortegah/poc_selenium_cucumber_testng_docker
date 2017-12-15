@@ -1,4 +1,4 @@
-FROM isortegah/node_firefox_debug
+FROM isortegah/node-firefox-debug:v1
 
 USER root
 

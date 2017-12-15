@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# IMPORTANT: Change this file only in directory Standalone!
+# IMPORTANT: Change this file only in directory StandaloneDebug!
 
 source /opt/bin/functions.sh
 
@@ -15,18 +15,29 @@ if [ ! -z "$SE_OPTS" ]; then
   echo "appending selenium options: ${SE_OPTS}"
 fi
 
-SERVERNUM=$(get_server_num)
-
 rm -f /tmp/.X*lock
 
-xvfb-run -n $SERVERNUM --server-args="-screen 0 $GEOMETRY -ac +extension RANDR" \
+SERVERNUM=$(get_server_num)
+
+DISPLAY=$DISPLAY \
+  xvfb-run -n $SERVERNUM --server-args="-screen 0 $GEOMETRY -ac +extension RANDR" \
   java ${JAVA_OPTS} -jar /opt/selenium/selenium-server-standalone.jar \
   ${SE_OPTS} &
 NODE_PID=$!
 
-
-cd /home/seluser/testing/poc_setecudo
-mvn test
-
 trap shutdown SIGTERM SIGINT
+for i in $(seq 1 10)
+do
+  xdpyinfo -display $DISPLAY >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    break
+  fi
+  echo Waiting xvfb...
+  sleep 0.5
+done
+
+fluxbox -display $DISPLAY &
+
+x11vnc -forever -usepw -shared -rfbport 5900 -display $DISPLAY &
+
 wait $NODE_PID

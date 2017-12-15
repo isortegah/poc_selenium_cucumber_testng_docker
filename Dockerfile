@@ -1,4 +1,4 @@
-FROM isortegah/standalone_firefox_debug
+FROM isortegah/standalone-firefox-debug:v1
 
 MAINTAINER ISORTEGAH <isortegah@gmail.com>
 
