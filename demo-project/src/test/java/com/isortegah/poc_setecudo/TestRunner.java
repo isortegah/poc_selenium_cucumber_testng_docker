@@ -74,9 +74,16 @@ public class TestRunner extends AbstractTestNGCucumberTests {
                             driver = new RemoteWebDriver( new URL(nodeUrl), capability);
                         }
 		} else if (config.getProperty("browserType").equals("Chrome")) {
+                    if(config.getProperty("webdriver").equals("local")){
 			System.setProperty("webdriver.chrome.driver",
 					System.getProperty("user.dir") + "//src//test//resources//drivers/chromedriver");
 			driver = new ChromeDriver();
+                    }else{
+                        DesiredCapabilities dc = DesiredCapabilities.chrome();
+
+                        nodeUrl = "http://127.0.0.1:4444/wd/hub"; 
+                        driver = new RemoteWebDriver( new URL(nodeUrl), dc);
+                    }
 		}
     }
     

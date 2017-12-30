@@ -4,3 +4,6 @@ poc_setecudo/.project
 .settings
 poc_setecudo/.classpath
 poc_setecudo/screenshots
+demo-project/screenshots/
+
+demo-project/target/
