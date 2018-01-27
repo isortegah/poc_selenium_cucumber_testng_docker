@@ -3,25 +3,10 @@ package com.isortegah.poc_setecudo;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-import org.codehaus.plexus.util.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -46,67 +31,6 @@ import org.testng.annotations.BeforeSuite;
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
     
-    
-    
-    public void LoadConfigProperty() throws IOException {
-		config = new Properties();
-		FileInputStream ip = new FileInputStream(
-				System.getProperty("user.dir") + "//src//test//resources//config//config.properties");
-		config.load(ip);
-    }
-    
-    public void openBrowser() throws Exception {
-		LoadConfigProperty();
-		if (config.getProperty("browserType").equals("Firefox")) {
-                        if(config.getProperty("webdriver").equals("local")){
-                            System.setProperty("webdriver.gecko.driver", "/usr/local/Cellar/geckodriver/0.19.1/bin/geckodriver");
-                            driver = new FirefoxDriver();
-                        }else{
-                            nodeUrl = "http://127.0.0.1:4444/wd/hub";  
-                            FirefoxOptions capability = new FirefoxOptions();
-                            capability.addPreference("browser.startup.page", 1);
-                            driver = new RemoteWebDriver( new URL(nodeUrl), capability);
-                        }
-		} else if (config.getProperty("browserType").equals("Chrome")) {
-                    if(config.getProperty("webdriver").equals("local")){
-			System.setProperty("webdriver.chrome.driver",
-					System.getProperty("user.dir") + "//src//test//resources//drivers/chromedriver");
-			driver = new ChromeDriver();
-                    }else{
-                        DesiredCapabilities dc = DesiredCapabilities.chrome();
-
-                        nodeUrl = "http://127.0.0.1:4444/wd/hub"; 
-                        driver = new RemoteWebDriver( new URL(nodeUrl), dc);
-                    }
-		}
-    }
-    
-    public void closeBrowser() throws Exception {
-        driver.quit();
-    }
-    
-    public void maximizeWindow() {
-        driver.manage().window().maximize();
-    }
-
-    public void implicitWait(int time) {
-        driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
-    }
-
-    public void pageLoad(int time) {
-        driver.manage().timeouts().pageLoadTimeout(time, TimeUnit.SECONDS);
-    }
-
-    public void deleteAllCookies() {
-        driver.manage().deleteAllCookies();
-    }
-    
-    public void setEnv() throws Exception {
-        LoadConfigProperty();
-        String baseUrl = config.getProperty("siteUrl");
-        driver.get(baseUrl);
-    }
-    
     public static String currentDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
@@ -121,43 +45,28 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     @BeforeMethod
     public void setUpMethod() throws Exception {
-        openBrowser();
-        maximizeWindow();
-        implicitWait(30);
-        deleteAllCookies();
-        setEnv();
     }
     
     @AfterSuite(alwaysRun = true)
     public void tearDownSuite() throws Exception {
-        closeBrowser();
     }
     
     @AfterClass(alwaysRun = true)
     public void takeScreenshot() throws IOException {
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "//screenshots/screenshot.png"));
+        /*File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "//screenshots/screenshot.png"));*/
 
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDownr(ITestResult result) throws IOException {
-        if (result.isSuccess()) {
+        /*if (result.isSuccess()) {
             File imageFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             String failureImageFileName = result.getMethod().getMethodName()
 					+ new SimpleDateFormat("MM-dd-yyyy_HH-ss").format(new GregorianCalendar().getTime()) + ".png";
             File failureImageFile = new File(System.getProperty("user.dir") + "//screenshots//" + failureImageFileName);
             FileUtils.copyFile(imageFile, failureImageFile);
-        }
+        }*/
 
     }
-    
-    public void pause(Integer milliseconds){
-        try {
-            TimeUnit.MILLISECONDS.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-    
 }
