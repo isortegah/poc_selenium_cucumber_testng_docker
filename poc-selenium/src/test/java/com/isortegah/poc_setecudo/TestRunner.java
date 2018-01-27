@@ -15,7 +15,6 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.codehaus.plexus.util.FileUtils;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,15 +22,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import static org.testng.Assert.*;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 
 /**
  *
@@ -40,7 +36,7 @@ import org.testng.annotations.BeforeTest;
 @CucumberOptions(
         features = "src/test/resources/features" ,
         glue = {"stepdefinition"} ,
-        tags = {"@SearchGoogle"} ,
+        tags = {"@SearchGoogle,@Web"} ,
         format = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
@@ -50,9 +46,7 @@ import org.testng.annotations.BeforeTest;
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
     
-    public static Properties config = null;
-    public static WebDriver driver = null;
-    private String nodeUrl;
+    
     
     public void LoadConfigProperty() throws IOException {
 		config = new Properties();

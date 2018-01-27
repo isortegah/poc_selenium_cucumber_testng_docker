@@ -9,3 +9,9 @@ demo-project/screenshots/
 demo-project/target/
 
 demo-project/\.project
+
+poc-selenium/target/
+
+poc-selenium/screenshots/
+
+poc-selenium/\.project
