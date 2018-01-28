@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="16254" started-at="2018-01-28T16:47:58Z" finished-at="2018-01-28T16:48:14Z">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.isortegah.poc_selenium.TestRunner@15d0c81b]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test name="Surefire test" duration-ms="16254" started-at="2018-01-28T16:47:58Z" finished-at="2018-01-28T16:48:14Z">
+      <class name="com.isortegah.poc_selenium.TestRunner">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.isortegah.poc_selenium.TestRunner@15d0c81b]" name="setUp" is-config="true" duration-ms="56" started-at="2018-01-28T10:47:58Z" finished-at="2018-01-28T10:47:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.isortegah.poc_selenium.TestRunner@15d0c81b]" name="setUpClass" is-config="true" duration-ms="1260" started-at="2018-01-28T10:47:58Z" finished-at="2018-01-28T10:47:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:com.isortegah.poc_selenium.TestRunner@15d0c81b]" name="setUpMethod" is-config="true" duration-ms="1" started-at="2018-01-28T10:48:00Z" finished-at="2018-01-28T10:48:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpMethod -->
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.isortegah.poc_selenium.TestRunner@15d0c81b]" name="feature" duration-ms="14550" started-at="2018-01-28T10:48:00Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-01-28T10:48:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[To search cucumber in google]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- feature -->
+        <test-method status="PASS" signature="tearDownr(org.testng.ITestResult)[pri:0, instance:com.isortegah.poc_selenium.TestRunner@15d0c81b]" name="tearDownr" is-config="true" duration-ms="1" started-at="2018-01-28T10:48:14Z" finished-at="2018-01-28T10:48:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=feature status=SUCCESS method=AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.isortegah.poc_selenium.TestRunner@15d0c81b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownr -->
+        <test-method status="PASS" signature="takeScreenshot()[pri:0, instance:com.isortegah.poc_selenium.TestRunner@15d0c81b]" name="takeScreenshot" is-config="true" duration-ms="0" started-at="2018-01-28T10:48:14Z" finished-at="2018-01-28T10:48:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeScreenshot -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.isortegah.poc_selenium.TestRunner@15d0c81b]" name="tearDownClass" is-config="true" duration-ms="16" started-at="2018-01-28T10:48:14Z" finished-at="2018-01-28T10:48:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+        <test-method status="PASS" signature="tearDownSuite()[pri:0, instance:com.isortegah.poc_selenium.TestRunner@15d0c81b]" name="tearDownSuite" is-config="true" duration-ms="1" started-at="2018-01-28T10:48:14Z" finished-at="2018-01-28T10:48:14Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownSuite -->
+      </class> <!-- com.isortegah.poc_selenium.TestRunner -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

@@ -1,0 +1,99 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 3573156004,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.initializeTest()"
+            }
+          }
+        ],
+        "line": 3,
+        "name": "Cucumber Google",
+        "description": "",
+        "id": "to-search-cucumber-in-google;cucumber-google",
+        "after": [
+          {
+            "result": {
+              "duration": 121754493,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.afterWeb()"
+            }
+          },
+          {
+            "result": {
+              "duration": 201883,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.embedScreenshot(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 5077145272,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I am on google page",
+            "match": {
+              "location": "SearchGooglePage.googlePage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 180219179,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I type the word Cheese!",
+            "match": {
+              "location": "SearchGooglePage.findElement()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2994286761,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I submit request",
+            "match": {
+              "location": "SearchGooglePage.submitRequest()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 2,
+            "name": "@SearchGoogle"
+          },
+          {
+            "line": 2,
+            "name": "@Web"
+          }
+        ]
+      }
+    ],
+    "name": "To search cucumber in google",
+    "description": "",
+    "id": "to-search-cucumber-in-google",
+    "keyword": "Feature",
+    "uri": "firstTest.feature"
+  }
+]
