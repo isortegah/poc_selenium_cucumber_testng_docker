@@ -1,4 +1,4 @@
-package com.isortegah.poc_setecudo.utils;
+package com.isortegah.pocselenium.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;

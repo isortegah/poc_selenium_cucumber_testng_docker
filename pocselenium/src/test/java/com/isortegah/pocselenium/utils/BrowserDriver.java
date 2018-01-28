@@ -1,4 +1,4 @@
-package com.isortegah.poc_setecudo.utils;
+package com.isortegah.pocselenium.utils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -65,7 +65,6 @@ public class BrowserDriver {
         try {
             TimeUnit.MILLISECONDS.sleep(milliseconds);
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 }

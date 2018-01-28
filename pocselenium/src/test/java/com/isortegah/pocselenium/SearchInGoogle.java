@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.isortegah.poc_setecudo;
+package com.isortegah.pocselenium;
 
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;

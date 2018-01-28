@@ -1,4 +1,4 @@
-package com.isortegah.poc_setecudo;
+package com.isortegah.pocselenium;
 
 
 import cucumber.api.CucumberOptions;
