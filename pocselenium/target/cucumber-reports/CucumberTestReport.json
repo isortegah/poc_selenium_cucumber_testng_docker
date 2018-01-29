@@ -6,7 +6,7 @@
         "before": [
           {
             "result": {
-              "duration": 3573156004,
+              "duration": 979261164,
               "status": "passed"
             },
             "match": {
@@ -21,20 +21,20 @@
         "after": [
           {
             "result": {
-              "duration": 121754493,
-              "status": "passed"
-            },
-            "match": {
-              "location": "Hooks.afterWeb()"
-            }
-          },
-          {
-            "result": {
-              "duration": 201883,
+              "duration": 232248,
               "status": "passed"
             },
             "match": {
               "location": "Hooks.embedScreenshot(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 68971770,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.afterWeb()"
             }
           }
         ],
@@ -43,7 +43,7 @@
         "steps": [
           {
             "result": {
-              "duration": 5077145272,
+              "duration": 4023999716,
               "status": "passed"
             },
             "line": 4,
@@ -55,7 +55,7 @@
           },
           {
             "result": {
-              "duration": 180219179,
+              "duration": 65585919,
               "status": "passed"
             },
             "line": 5,
@@ -67,7 +67,7 @@
           },
           {
             "result": {
-              "duration": 2994286761,
+              "duration": 2550015453,
               "status": "passed"
             },
             "line": 6,
