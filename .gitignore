@@ -15,3 +15,5 @@ poc-selenium/target/
 poc-selenium/screenshots/
 
 poc-selenium/\.project
+/poc-selenium/target/
+poc-selenium/\.idea/
